@@ -17,7 +17,7 @@ npm install
 gulp
 
 # Run
-./atom-shell .
+atom-shell .
 ```
 
 ## Gulp
