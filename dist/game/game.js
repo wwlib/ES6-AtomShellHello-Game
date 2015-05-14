@@ -101,7 +101,6 @@ var Game = (function () {
 
             this.playerBullets.forEach(function (bullet) {
                 _this.crystals.forEach(function (crystal) {
-                    console.log('handleCollisions: ${crystal}, ${enemy}');
                     if (_this.collides(bullet, crystal)) {
                         crystal.die();
                         bullet.die();

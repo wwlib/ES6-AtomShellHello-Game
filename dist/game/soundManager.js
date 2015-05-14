@@ -36,7 +36,9 @@ var SoundManager = (function () {
         }
     }, {
         key: 'playSoundWithIdAndTime',
-        value: function playSoundWithIdAndTime(id, time) {
+        value: function playSoundWithIdAndTime(id) {
+            var time = arguments[1] === undefined ? 0 : arguments[1];
+
             var buffer = SoundManager.buffers[id];
 
             if (buffer && SoundManager.audioContext) {

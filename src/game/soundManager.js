@@ -19,7 +19,7 @@ class SoundManager {
         return SoundManager.audioContext;
     }
 
-    static playSoundWithIdAndTime(id, time) {
+    static playSoundWithIdAndTime(id, time=0) {
         var buffer = SoundManager.buffers[id];
 
         if (buffer && SoundManager.audioContext) {

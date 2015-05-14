@@ -67,7 +67,6 @@ class Game {
 
         this.playerBullets.forEach(bullet => {
             this.crystals.forEach(crystal =>  {
-                console.log("handleCollisions: ${crystal}, ${enemy}");
                 if (this.collides(bullet, crystal)) {
                     crystal.die();
                     bullet.die();

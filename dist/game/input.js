@@ -17,22 +17,31 @@ var Input = (function () {
 
         this.pressedKeys = {};
 
-        var thisInput = this;
+        this.onKeyDownHandler = this.onKeyDown.bind(this);
+        this.onKeyUpHandler = this.onKeyUp.bind(this);
+        this.onWindowBlurHandler = this.onWindowBlur.bind(this);
 
-        document.addEventListener('keydown', function (e) {
-            thisInput.setKey(e, true);
-        });
-
-        document.addEventListener('keyup', function (e) {
-            thisInput.setKey(e, false);
-        });
-
-        window.addEventListener('blur', function () {
-            thisInput.pressedKeys = {};
-        });
+        document.addEventListener('keydown', this.onKeyDownHandler);
+        document.addEventListener('keyup', this.onKeyUpHandler);
+        window.addEventListener('blur', this.onWindowBlurHandler);
     }
 
     _createClass(Input, [{
+        key: 'onKeyDown',
+        value: function onKeyDown(e) {
+            this.setKey(e, true);
+        }
+    }, {
+        key: 'onKeyUp',
+        value: function onKeyUp(e) {
+            this.setKey(e, false);
+        }
+    }, {
+        key: 'onWindowBlur',
+        value: function onWindowBlur() {
+            this.pressedKeys = {};
+        }
+    }, {
         key: 'setKey',
         value: function setKey(event, status) {
             var code = event.keyCode;
@@ -65,6 +74,13 @@ var Input = (function () {
         key: 'isDown',
         value: function isDown(key) {
             return this.pressedKeys[key.toUpperCase()];
+        }
+    }, {
+        key: 'removeListeners',
+        value: function removeListeners() {
+            document.removeEventListener('keydown', this.onKeyDownHandler);
+            document.removeEventListener('keyup', this.onKeyUpHandler);
+            window.removeEventListener('blur', this.onWindowBlurHandler);
         }
     }]);
 

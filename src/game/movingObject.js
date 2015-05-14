@@ -41,7 +41,6 @@ class MovingObject {
 
     randomizeCoords() {
         var x_range = this.boundsRect.width;
-        console.log("x_range: " + x_range);
         this.coords.x = this.boundsRect.left + (x_range / 4 + Math.random() * x_range / 2);
         this.coords.y = this.boundsRect.top + 0;
     }
@@ -82,7 +81,6 @@ class MovingObject {
         //TODO SoundManager.play("explosion");
 
         this.alive = false;
-        console.log("MovingObject: die");
     }
 }
 
