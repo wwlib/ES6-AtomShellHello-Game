@@ -1,4 +1,4 @@
-# ES6-AtomShellHello-Game
+# ES6-Electron-Hello-Game
 
 This is a simple Hello World using ES6 running in Electron (formerly atom-shell).
 
