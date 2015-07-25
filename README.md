@@ -15,6 +15,7 @@ cd ES6-Electron-Hello-Game
 
 # Install electron (formerly atom-shell) globally in your $PATH
 npm install electron-prebuilt -g
+(May require: sudo npm install electron-prebuilt -g)
 
 # From inside the ES6-AtomShellHello-Game directory..
 npm install
