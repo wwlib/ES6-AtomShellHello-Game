@@ -1,21 +1,22 @@
-'use strict';
-
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
 /**
  * Created by andrew on 3/28/15.
  */
 
-var _AudioBufferLoader = require('./audioBufferLoader');
+'use strict';
 
-var _AudioBufferLoader2 = _interopRequireWildcard(_AudioBufferLoader);
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+var _audioBufferLoader = require('./audioBufferLoader');
+
+var _audioBufferLoader2 = _interopRequireDefault(_audioBufferLoader);
 
 var SoundManager = (function () {
     function SoundManager() {
@@ -37,7 +38,7 @@ var SoundManager = (function () {
     }, {
         key: 'playSoundWithIdAndTime',
         value: function playSoundWithIdAndTime(id) {
-            var time = arguments[1] === undefined ? 0 : arguments[1];
+            var time = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
             var buffer = SoundManager.buffers[id];
 
@@ -64,7 +65,7 @@ var SoundManager = (function () {
                 try {
                     source.stop();
                 } catch (e) {
-                    console.log('error: ' + e);
+                    console.log("error: " + e);
                 }
             }
             SoundManager.audioSources = [];
@@ -83,7 +84,7 @@ var SoundManager = (function () {
                 //console.log("loadSounds: " + name + ", " + path);
             }
 
-            var bufferLoader = new _AudioBufferLoader2['default'](SoundManager.audioContext, paths, function (bufferList) {
+            var bufferLoader = new _audioBufferLoader2['default'](SoundManager.audioContext, paths, function (bufferList) {
                 for (var i = 0; i < bufferList.length; i++) {
                     var buffer = bufferList[i];
                     var name = names[i];

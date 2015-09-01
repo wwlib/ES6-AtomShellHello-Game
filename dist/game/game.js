@@ -1,45 +1,46 @@
-'use strict';
-
-var _interopRequireWildcard = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-Object.defineProperty(exports, '__esModule', {
-    value: true
-});
 /**
  * Created by andrew on 4/7/15.
  */
 
-var _Sprite = require('./sprite');
+'use strict';
 
-var _Sprite2 = _interopRequireWildcard(_Sprite);
+Object.defineProperty(exports, '__esModule', {
+    value: true
+});
 
-var _Player = require('./player');
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _Player2 = _interopRequireWildcard(_Player);
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-var _Bullet = require('./bullet');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-var _Bullet2 = _interopRequireWildcard(_Bullet);
+var _sprite = require('./sprite');
 
-var _Enemy = require('./enemy');
+var _sprite2 = _interopRequireDefault(_sprite);
 
-var _Enemy2 = _interopRequireWildcard(_Enemy);
+var _player = require('./player');
 
-var _BouncingObject = require('./bouncingObject');
+var _player2 = _interopRequireDefault(_player);
 
-var _BouncingObject2 = _interopRequireWildcard(_BouncingObject);
+var _bullet = require('./bullet');
 
-var _SoundManager = require('./soundManager');
+var _bullet2 = _interopRequireDefault(_bullet);
 
-var _SoundManager2 = _interopRequireWildcard(_SoundManager);
+var _enemy = require('./enemy');
 
-var _Rect = require('./rect');
+var _enemy2 = _interopRequireDefault(_enemy);
 
-var _Rect2 = _interopRequireWildcard(_Rect);
+var _bouncingObject = require('./bouncingObject');
+
+var _bouncingObject2 = _interopRequireDefault(_bouncingObject);
+
+var _soundManager = require('./soundManager');
+
+var _soundManager2 = _interopRequireDefault(_soundManager);
+
+var _rect = require('./rect');
+
+var _rect2 = _interopRequireDefault(_rect);
 
 var Game = (function () {
     function Game(canvas_context, player_sprite, debris_sprite, crystal_sprite, bullet_sprite) {
@@ -51,14 +52,14 @@ var Game = (function () {
         this.crystalSprite = crystal_sprite;
         this.bulletSprite = bullet_sprite;
 
-        this.player = new _Player2['default'](this.playerSprite, 50, 530, { x: 0, y: 0 });
-        this.crystal = new _BouncingObject2['default'](this.crystalSprite, 0, 100, null, 3000, 375);
-        this.enemy = new _Enemy2['default'](this.debrisSprite, 100, 0, { x: 0, y: 1 });
+        this.player = new _player2['default'](this.playerSprite, 50, 530, { "x": 0, "y": 0 });
+        this.crystal = new _bouncingObject2['default'](this.crystalSprite, 0, 100, null, 3000, 375);
+        this.enemy = new _enemy2['default'](this.debrisSprite, 100, 0, { "x": 0, "y": 1 });
 
-        this.gameBoundsRect = new _Rect2['default']({ top: 0, left: 0, width: 630, height: 580 });
+        this.gameBoundsRect = new _rect2['default']({ top: 0, left: 0, width: 630, height: 580 });
         this.enemy.boundsRect = this.gameBoundsRect;
 
-        this.crystalBoundsRect = new _Rect2['default']({ top: 100, left: 0, width: 630, height: 50 });
+        this.crystalBoundsRect = new _rect2['default']({ top: 100, left: 0, width: 630, height: 50 });
         this.crystal.boundsRect = this.crystalBoundsRect;
 
         this.activeBullets = 0;
@@ -71,10 +72,10 @@ var Game = (function () {
         this.lastSpawnTime = 0;
     }
 
+    // Collision Handling
+
     _createClass(Game, [{
         key: 'collides',
-
-        // Collision Handling
         value: function collides(a, b) {
             return a.coords.x < b.coords.x + b.width && a.coords.x + a.width > b.coords.x && a.coords.y < b.coords.y + b.height && a.coords.y + a.height > b.coords.y;
         }
@@ -202,11 +203,11 @@ var Game = (function () {
     }, {
         key: 'shoot',
         value: function shoot() {
-            _SoundManager2['default'].playSoundWithIdAndTime('shoot', 0);
+            _soundManager2['default'].playSoundWithIdAndTime("shoot", 0);
 
             if (this.player.alive) {
                 var bulletPosition = this.player.midpoint;
-                var bullet = new _Bullet2['default'](this.bulletSprite, bulletPosition.x, bulletPosition.y, { x: 0, y: -10 });
+                var bullet = new _bullet2['default'](this.bulletSprite, bulletPosition.x, bulletPosition.y, { "x": 0, "y": -10 });
                 bullet.boundsRect = this.gameBoundsRect;
 
                 this.playerBullets.push(bullet);
@@ -218,7 +219,7 @@ var Game = (function () {
             if (timestamp - this.lastSpawnTime > 2000) {
                 this.lastSpawnTime = timestamp;
 
-                var enemy = new _Enemy2['default'](this.debrisSprite, 10, 10, { x: 0, y: 1 });
+                var enemy = new _enemy2['default'](this.debrisSprite, 10, 10, { "x": 0, "y": 1 });
                 enemy.boundsRect = this.gameBoundsRect;
                 enemy.randomizeCoords();
                 this.enemies.push(enemy);

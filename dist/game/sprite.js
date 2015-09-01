@@ -1,15 +1,16 @@
+/**
+ * Created by andrew on 3/28/15.
+ */
+
 "use strict";
-
-var _classCallCheck = function (instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } };
-
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-/**
- * Created by andrew on 3/28/15.
- */
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Sprite = (function () {
     function Sprite(id, image, width, height, sourceX, sourceY) {
@@ -27,22 +28,21 @@ var Sprite = (function () {
 
         this.centerXOffset = -83; // default offset
         this.centerYOffset = -100; // default offset
-        this.scale = 1; // default image scale
+        this.scale = 1.0; // default image scale
         this.scaledWidth = this.width * this.scale;
         this.scaledHeight = this.height * this.scale;
         this.scaledXOffset = this.centerXOffset * this.scale;
         this.scaledYOffset = this.centerYOffset * this.scale;
     }
 
+    /*
+    duplicate(){
+        return new Sprite(this.image, this.width, this.height, this.sourceX, this.sourceY);
+    }
+    */
+
     _createClass(Sprite, [{
         key: "setCenterOffse",
-
-        /*
-        duplicate(){
-            return new Sprite(this.image, this.width, this.height, this.sourceX, this.sourceY);
-        }
-        */
-
         value: function setCenterOffse(x_offset, y_offset) {
             this.centerXOffset = x_offset;
             this.centerYOffset = y_offset;
